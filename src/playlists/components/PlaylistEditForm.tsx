@@ -1,9 +1,9 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { Playlist } from '../../model/Playlist'
 
-interface ValidationErrors {
-    [fieldName: string]: Error[] | null;
-}
+// interface ValidationErrors {
+//     [fieldName: string]: Error[] | null;
+// }
 
 interface Props {
     playlist: Playlist;

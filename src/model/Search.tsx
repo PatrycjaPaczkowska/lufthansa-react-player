@@ -7,6 +7,7 @@ export interface AlbumsResponse {
 
 export interface AlbumsSearchResponse {
     albums: PagingObject<Album>;
+    artists: PagingObject<Album>; 
 }
 
 export interface AlbumView {

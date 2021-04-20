@@ -36,7 +36,7 @@ export const PlaylistsView = (props: Props) => {
     const [playlists, setPlaylists] = useState<Playlist[]>(data)
 
     useEffect(() => {
-        setSelectedPlaylist(playlists.find(p => p.id == selectedId))
+        setSelectedPlaylist(playlists.find(p => p.id === selectedId))
     }, [selectedId, playlists])
 
     /* TODO:
@@ -92,8 +92,8 @@ export const PlaylistsView = (props: Props) => {
     }
 
     return (
-        <div>
-            <h4>PlaylistsView</h4>
+        <div className="mt-4">
+            <h4 className="mt-4 mb-4">PlaylistsView</h4>
             {/* .row>.col*2 */}
             <div className="row">
                 <div className="col">

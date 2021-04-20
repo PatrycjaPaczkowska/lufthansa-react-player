@@ -1,18 +1,23 @@
-import React from 'react'
-import { AlbumView } from '../../model/Search'
+import React from "react";
+import { AlbumView } from "../../model/Search";
 
 interface Props {
-    album: AlbumView
+	item: AlbumView;
 }
 
-export const AlbumCard = ({ album }: Props) => {
-    return (
-        <div className="card h-100">
-            <img src={album.images[0].url} className="card-img-top" alt={album.name} />
+export const AlbumCard = ({ item }: Props) => {
+   console.log(item)
+	return (
+		<div className="card h-100">
+			<img
+				src={item.images[0]?.url ?? 'http://placekitten.com/640/640'}
+				className="card-img-top"
+				alt={item.name}
+			/>
 
-            <div className="card-body">
-                <h5 className="card-title">{album.name}</h5>
-            </div>
-        </div>
-    )
-}
+			<div className="card-body">
+				<h5 className="card-title">{item.name}</h5>
+			</div>
+		</div>
+	);
+};

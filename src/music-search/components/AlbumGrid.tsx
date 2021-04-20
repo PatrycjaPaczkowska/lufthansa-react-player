@@ -3,15 +3,15 @@ import { AlbumView } from '../../model/Search'
 import { AlbumCard } from './AlbumCard'
 
 interface Props {
-    albums: AlbumView[]
+   items: AlbumView[]
 }
 
-export const AlbumGrid = ({ albums }: Props) => {
+export const AlbumGrid = ({ items }: Props) => {
     return (
         <div>
             <div className="row row-cols-1 row-cols-sm-4 no-gutters">
-                {albums.map(album => <div className="col mb-4" key={album.id}>
-                    <AlbumCard album={album} />
+                {items.map(item => <div className="col mb-4" key={item.id}>
+                    <AlbumCard item={item} />
                 </div>)}
             </div>
         </div>
