@@ -1,0 +1,23 @@
+.container {
+	display: flex;
+	justify-content: center;
+}
+
+.board {
+   display: flex;
+	align-content: center;
+   flex-direction: column;
+   align-items: center;
+   width: 100%;
+   background-color: gray;
+	margin: 10px;
+   min-height: 400px;
+}
+.card {
+	background-color: white;
+	padding: 5px;
+   width: 80%;
+	margin: 20px 10px 10px;
+   cursor: move;
+   border-radius: 4px;
+}
