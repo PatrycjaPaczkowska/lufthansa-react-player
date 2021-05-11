@@ -6,7 +6,7 @@ import { DataProps } from "../containers/LoginView";
 
 export interface InputProps {
 	type: string;
-	error: boolean;
+	error: string;
 	value: string | React.Dispatch<React.SetStateAction<string>>;
 	onChange: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -24,37 +24,35 @@ export interface LoginFormProps {
 }
 
 const LoginForm = ({ onLogin }: LoginFormProps) => {
-	const [error, setError] = useState("");
 
-	const loginInput = useInput("");
-	const passwordInput = useInput("");
+	const loginInput = useInput("", (value: string) => {
+		if (value.length < 3) return ("log err");
+		else return "";
+	});
+	const passwordInput = useInput("",(value: string) => {
+		if (value.length < 3) return ("pass err");
+		else return "";
+	});
 
-   const validation = (value:string) => {
-      if (value.length < 3) setError("Your login or password is too short. Minimum 3 characters.")
-      else setError("");
-   }
 
 	const onLoginButton = (e: any) => {
 		e.preventDefault();
 
-      validation(loginInput.value);
-      validation(passwordInput.value);
+      loginInput.validation(loginInput.props.value);
+      passwordInput.validation(passwordInput.props.value);
 
-		if (error !== "") return;
+		if (loginInput.props.error !== "" || passwordInput.props.error) return;
 		else {
 			onLogin({
-				login: loginInput.value,
-				password: passwordInput.value,
+				login: loginInput.props.value,
+				password: passwordInput.props.value,
 			});
 			loginInput.reset();
 			passwordInput.reset();
-         setError("");
 		}
 	};
 
-   const onBlurError = (e: any) => {
-      validation(e.target.value);
-   }
+
 
 	return (
 		<form>
@@ -62,24 +60,21 @@ const LoginForm = ({ onLogin }: LoginFormProps) => {
 				aria-label="login"
 				type="text"
 				placeholder="Login"
-				error={error.length ? true : false}
-				value={loginInput.value}
-				onChange={loginInput.onChange}
-            onBlur={onBlurError}
+
+				{...loginInput.props}
 			/>
 			<InputStyle
 				aria-label="password"
 				type="password"
 				placeholder="Password"
-				error={error.length ? true : false}
-				value={passwordInput.value}
-				onChange={passwordInput.onChange}
-            onBlur={onBlurError}
+
+				{...passwordInput.props}
 			/>
 			<div>
 				<Button aria-label="LoginButton" onClick={onLoginButton} size="large" label="Login" />
 			</div>
-			<p>{error.length ? error : null}</p>
+			<p>{loginInput.props.error.length ? loginInput.props.error : null}</p>
+			<p>{passwordInput.props.error.length ? passwordInput.props.error : null}</p>
 		</form>
 	);
 };
