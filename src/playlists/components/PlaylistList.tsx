@@ -9,7 +9,7 @@ interface Props {
     onRemove(id: Playlist['id']): void
 }
 
-export const PlaylistList = ({ playlists, selectedId, onSelected , onRemove}: Props) => {
+export const PlaylistList = ({ playlists, selectedId, onSelected, onRemove}: Props) => {
 
     return (
         <div>

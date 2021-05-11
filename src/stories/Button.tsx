@@ -21,7 +21,7 @@ export interface ButtonProps {
   /**
    * Optional click handler
    */
-  onClick?: () => void;
+  onClick?: (e: any) => any;
 }
 
 

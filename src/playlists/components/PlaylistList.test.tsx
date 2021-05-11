@@ -75,8 +75,10 @@ describe.only('PlaylistList', () => {
     test('emits remove event when remove clicked', () => {
         const { selectSpy, removeSpy, playlists } = setup({})
 
-        const item = screen.getByText(playlists[0].name, { exact: false })
-        const removeBtn = getByRole(item, 'button', { name: 'remove' })
+        const item = screen.getByText(playlists[0].name, { exact: false });
+
+        const removeBtn = getByRole(item, 'button', { name: 'remove' });
+
         userEvent.click(removeBtn)
 
         expect(removeSpy).toHaveBeenCalledWith(playlists[0].id)
