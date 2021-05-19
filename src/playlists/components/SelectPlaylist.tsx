@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Playlist } from '../../model/Playlist'
 
 interface Props {
